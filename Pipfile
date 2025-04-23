@@ -1,0 +1,15 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+sanic = "==24.12.0"
+sanic-ext = "==24.12.0"
+django = "==5.1.7"
+daphne = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
