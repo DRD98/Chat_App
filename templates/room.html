@@ -216,37 +216,31 @@
 
 
         // Recieve Message from the backend
-        // socket.addEventListener("message", (e) => {
-        //     const data = JSON.parse(e.data)["message"]
+        socket.addEventListener("message", (e) => {
+            const data = JSON.parse(e.data)["message"]
 
-        //     console.log(data);
+            let sender = data["sender"]
+            let content = data["message"]
 
-        //     let sender = data["sender"]
-        //     let content = data["message"]
+            if (sender == "{{user}}") {
+                document.getElementById("message").value = ""
+            }
 
-        //     if (sender == "{{user}}") {
-        //         document.getElementById("message").value = ""
-        //     }
+            if (sender == "{{user}}") {
+                chats_div.innerHTML += `<div class="single-message sent">
+                    <div class="msg-body">${content}</div>
+                    <p class="sender">Me</p>
+                    </div>`;
+            } else {
+                chats_div.innerHTML += `<div class="single-message">
+                    <div class="msg-body">${content}</div>
+                    <p class="sender">${sender}</p>
+                    </div>`;
+            }
 
-        //     if (sender == "{{user}}") {
-        //         document.getElementById("message").value = ""
-        //     }
+            scrollToBottom();
 
-        //     if (sender == "{{user}}") {
-        //         chats_div.innerHTML += `<div class="single-message sent">
-        //             <div class="msg-body">${content}</div>
-        //             <p class="sender">Me</p>
-        //             </div>`;
-        //     } else {
-        //         chats_div.innerHTML += `<div class="single-message">
-        //             <div class="msg-body">${content}</div>
-        //             <p class="sender">${sender}</p>
-        //             </div>`;
-        //     }
-
-        //     scrollToBottom();
-
-        // });
+        });
 
     </script>
 </body>
